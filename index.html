@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат внутри ИИ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo">MindSpace</div>
+        <nav>
+            <a href="#" onclick="showHowItWorks()">Как это работает</a>
+            <a href="#">О нас</a>
+        </nav>
+    </header>
+    <!-- Выбор темы -->
+    <section class="tags">
+        <h2>Выберите интересующую тему:</h2>
+        <select id="topicSelect">
+            <option value="Философия">Философия</option>
+            <option value="Технологии">Технологии</option>
+            <option value="Наука">Наука</option>
+            <option value="Креатив">Креатив</option>
+        </select>
+        <button onclick="findPartner()">Найти собеседника</button>
+    </section>
+    <!-- Чат-окно -->
+    <section class="chat" id="chatSection" style="display: none;">
+        <div id="messages" class="messages"></div>
+        <div class="input-area">
+            <input type="text" id="message" placeholder="Введите сообщение...">
+            <button onclick="sendMessage()">Отправить</button>
+            <button id="voiceButton" onclick="toggleVoiceInput()" title="Говорите"><i>🎤</i></button>
+        </div>
+    </section>
+    <!-- Раздел "Как это работает" -->
+    <section id="howItWorksSection" style="display: none; text-align: center;">
+        <h2>Как это работает?</h2>
+        <p>
+            MindSpace — это платформа для безопасного и интеллектуального общения через медиатора-ИИ. Вы можете:
+            <ul>
+                <li>Выбирать темы для обсуждения.</li>
+                <li>Использовать голосовой ввод текста с мигающим значком микрофона.</li>
+                <li>Получать автоматический перевод при неверной раскладке клавиатуры.</li>
+                <li>Общаться с модератором-ИИ через специальную ссылку.</li>
+            </ul>
+        </p>
+        <button onclick="returnToChat()">Вернуться в чат</button>
+    </section>
+    <!-- Подвал -->
+    <footer>
+        <p>&copy; 2023 MindSpace. Все права защищены.</p>
+    </footer>
+    <!-- Ссылка для вызова модератора-ИИ -->
+    <a href="#" id="aiLink" onclick="addAIComment(event)">Позвать модератора-ИИ</a>
+    <script src="script.js"></script>
+</body>
+</html>
