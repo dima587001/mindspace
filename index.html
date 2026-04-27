@@ -1,60 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чат внутри ИИ</title>
+    <title>MindSpace - Чат с ИИ</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Шапка -->
-    <header>
+    <header role="banner">
         <div class="logo">MindSpace</div>
-        <nav>
-            <a href="#" onclick="showHowItWorks()">Как это работает</a>
-            <a href="#">О нас</a>
+        <nav role="navigation" aria-label="Основная навигация">
+            <button type="button" id="howItWorksBtn" aria-label="Как это работает">Как это работает</button>
+            <a href="#" aria-label="О проекте">О нас</a>
         </nav>
     </header>
-    <!-- Выбор темы -->
-    <section class="tags">
-        <h2>Выберите интересующую тему:</h2>
-        <select id="topicSelect">
-            <option value="Философия">Философия</option>
-            <option value="Технологии">Технологии</option>
-            <option value="Наука">Наука</option>
-            <option value="Креатив">Креатив</option>
-        </select>
-        <button onclick="findPartner()">Найти собеседника</button>
-    </section>
-    <!-- Чат-окно -->
-    <section class="chat" id="chatSection" style="display: none;">
-        <div id="messages" class="messages"></div>
-        <div class="input-area">
-            <input type="text" id="message" placeholder="Введите сообщение...">
-            <button onclick="sendMessage()">Отправить</button>
-            <button id="voiceButton" onclick="toggleVoiceInput()" title="Говорите"><i>🎤</i></button>
-        </div>
-    </section>
-    <!-- Раздел "Как это работает" -->
-    <section id="howItWorksSection" style="display: none; text-align: center;">
-        <h2>Как это работает?</h2>
-        <p>
-            MindSpace — это платформа для безопасного и интеллектуального общения через медиатора-ИИ. Вы можете:
+    
+    <!-- Основной контент -->
+    <main role="main">
+        <!-- Выбор темы -->
+        <section class="tags" aria-labelledby="topicHeading">
+            <h2 id="topicHeading">Выберите интересующую тему:</h2>
+            <label for="topicSelect" class="visually-hidden">Тема обсуждения</label>
+            <select id="topicSelect" aria-required="true">
+                <option value="Философия">Философия</option>
+                <option value="Технологии">Технологии</option>
+                <option value="Наука">Наука</option>
+                <option value="Креатив">Креатив</option>
+            </select>
+            <button type="button" id="findPartnerBtn" aria-label="Найти собеседника по выбранной теме">Найти собеседника</button>
+        </section>
+        
+        <!-- Чат-окно -->
+        <section class="chat" id="chatSection" aria-label="Чат" hidden>
+            <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Сообщения чата"></div>
+            <div class="input-area">
+                <label for="messageInput" class="visually-hidden">Введите сообщение</label>
+                <input type="text" id="messageInput" placeholder="Введите сообщение..." aria-label="Поле ввода сообщения" autocomplete="off">
+                <button type="button" id="sendBtn" aria-label="Отправить сообщение">Отправить</button>
+                <button type="button" id="voiceButton" aria-label="Голосовой ввод" title="Голосовой ввод" disabled>
+                    <span aria-hidden="true">🎤</span>
+                </button>
+            </div>
+            <div id="voiceStatus" class="status-indicator" aria-live="polite" hidden></div>
+        </section>
+        
+        <!-- Раздел "Как это работает" -->
+        <section id="howItWorksSection" aria-labelledby="howItWorksHeading" hidden>
+            <h2 id="howItWorksHeading">Как это работает?</h2>
+            <p>MindSpace — это платформа для безопасного и интеллектуального общения через медиатора-ИИ. Вы можете:</p>
             <ul>
                 <li>Выбирать темы для обсуждения.</li>
-                <li>Использовать голосовой ввод текста с мигающим значком микрофона.</li>
+                <li>Использовать голосовой ввод текста (при поддержке браузером).</li>
                 <li>Получать автоматический перевод при неверной раскладке клавиатуры.</li>
-                <li>Общаться с модератором-ИИ через специальную ссылку.</li>
+                <li>Общаться с модератором-ИИ.</li>
             </ul>
-        </p>
-        <button onclick="returnToChat()">Вернуться в чат</button>
-    </section>
+            <button type="button" id="returnToChatBtn">Вернуться в чат</button>
+        </section>
+    </main>
+    
     <!-- Подвал -->
-    <footer>
+    <footer role="contentinfo">
         <p>&copy; 2023 MindSpace. Все права защищены.</p>
     </footer>
-    <!-- Ссылка для вызова модератора-ИИ -->
-    <a href="#" id="aiLink" onclick="addAIComment(event)">Позвать модератора-ИИ</a>
+    
+    <!-- Кнопка для вызова модератора-ИИ (показывается только в чате) -->
+    <button type="button" id="aiModeratorBtn" class="ai-moderator-btn" aria-label="Позвать модератора-ИИ" hidden>
+        🤖 Позвать модератора-ИИ
+    </button>
+    
     <script src="script.js"></script>
 </body>
 </html>
