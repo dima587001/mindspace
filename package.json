@@ -1,0 +1,30 @@
+{
+  "name": "synapse-net-backend",
+  "version": "1.0.0",
+  "description": "Synapse Net — когнитивная система распределения задач (соционика, pulse-опросы, согласия)",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "NODE_ENV=development node src/app.js",
+    "migrate": "psql \"$DATABASE_URL\" -f migrations/migration_001_initial_schema.sql",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "socionics",
+    "task-assignment",
+    "pulse",
+    "consents",
+    "express",
+    "postgresql"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
